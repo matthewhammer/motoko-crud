@@ -52,10 +52,10 @@ type and basic operations over it.  (The base library gives these definitions fo
     #permissionDenied
   };
 
-  public type Res<R> = Result.Result<Resp<R>, Err>;
+  public type Res<X> = Result.Result<X, Err>;
 
   public type LogOp<Id, CRU> = {
-    #create: CRU;
+    #create: (Id, CRU);
     #read: (Id, Res<CRU>);
     #update: (Id, CRU, ?Err);
     #delete: (Id, ?Err);

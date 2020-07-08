@@ -32,7 +32,7 @@ actor {
     Debug.print ("updated " # (debug_show (ux, uy)));
     let r2x = db.read(x);
     let r2y = db.read(y);
-    Debug.print ("read-2" # (debug_show (r2x, r2y)));
+    Debug.print ("read-2 " # (debug_show (r2x, r2y)));
     let dx = db.delete(x);
     let dy = db.delete(y);
     Debug.print ("delete " # (debug_show (dx, dy)));
