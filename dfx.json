@@ -1,5 +1,8 @@
 {
   "canisters": {
+    "RawMap": {
+      "main": "test/RawMap.mo"
+    },
     "Test": {
       "main": "test/Test.mo"
     }
