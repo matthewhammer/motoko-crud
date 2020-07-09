@@ -4,7 +4,7 @@
       "main": "test/RawMap.mo"
     },
     "Test": {
-      "main": "test/Test.mo"
+      "main": "test/NatIntMap.mo"
     }
   },
   "defaults": {
