@@ -9,14 +9,14 @@ dfx start --background
 dfx build
 
 echo
-echo == Test.
+echo == NatIntMap test.
 echo
 
-dfx canister install Test
-dfx canister call Test test '()'
+dfx canister install NatIntMap
+dfx canister call NatIntMap test '()'
 
 echo
-echo == Rawmap.
+echo == RawMap test.
 echo
 
 dfx canister install RawMap

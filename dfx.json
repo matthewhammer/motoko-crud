@@ -3,8 +3,8 @@
     "RawMap": {
       "main": "test/RawMap.mo"
     },
-    "Test": {
-      "main": "test/Test.mo"
+    "NatIntMap": {
+      "main": "test/NatIntMap.mo"
     }
   },
   "defaults": {
