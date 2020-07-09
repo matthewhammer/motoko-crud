@@ -3,7 +3,7 @@
     "RawMap": {
       "main": "test/RawMap.mo"
     },
-    "Test": {
+    "NatInt": {
       "main": "test/NatIntMap.mo"
     }
   },
