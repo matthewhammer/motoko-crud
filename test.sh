@@ -12,5 +12,12 @@ echo
 echo == Test.
 echo
 
-dfx canister install --all
+dfx canister install Test
 dfx canister call Test test '()'
+
+echo
+echo == Rawmap.
+echo
+
+dfx canister install RawMap
+dfx canister call RawMap selfTest '()'
