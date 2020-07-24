@@ -1,7 +1,7 @@
 import Types "Types";
 
 import Result "mo:base/Result";
-import Buf "mo:base/Buf";
+import Buffer "mo:base/Buffer";
 
 import TrieMap "mo:base/TrieMap";
 import RBTree "mo:base/RBTree";
@@ -28,25 +28,25 @@ module {
 
     var lastCreated : ?Id = null;
 
-    var logBuf : Types.LogBuf<Id, CRU> = Buf.Buf(0);
+    var logBuffer : Types.LogBuffer<Id, CRU> = Buffer.Buffer(0);
 
     public func create(cru:CRU) : Id {
       let x : Id = idCreate(cru, lastCreated);
       lastCreated := ?x;
       entries.put(x, cru);
-      logBuf.add(#create(x, cru));
+      logBuffer.add(#create(x, cru));
       x
     };
 
     public func read(id:Id) : Res<CRU> {
       switch (entries.get(id)) {
         case null {
-          logBuf.add(#read(id, #err(#invalidId)));
+          logBuffer.add(#read(id, #err(#invalidId)));
           #err(#invalidId)
         };
         case (?cru) {
           let r : Types.Res<CRU> = #ok(cru);
-          logBuf.add(#read(id, r));
+          logBuffer.add(#read(id, r));
           #ok(cru)
         };
       }
@@ -55,11 +55,11 @@ module {
     public func update(id:Id, cru:CRU) : Res<()> {
       switch (entries.replace(id, cru)) {
         case null {
-          logBuf.add(#update(id, cru, ?#invalidId));
+          logBuffer.add(#update(id, cru, ?#invalidId));
           #err(#invalidId)
         };
         case (?_) {
-          logBuf.add(#update(id, cru, null));
+          logBuffer.add(#update(id, cru, null));
           #ok(())
         };
       }
@@ -72,9 +72,9 @@ module {
       }
     };
 
-    public func drainLog() : Types.LogBuf<Id, CRU> {
-      let l = logBuf.clone();
-      logBuf.clear();
+    public func drainLog() : Types.LogBuffer<Id, CRU> {
+      let l = logBuffer.clone();
+      logBuffer.clear();
       l
     }
 

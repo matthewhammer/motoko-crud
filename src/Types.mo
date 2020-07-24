@@ -1,5 +1,5 @@
 import Result "mo:base/Result";
-import Buf "mo:base/Buf";
+import Buffer "mo:base/Buffer";
 import Hash "mo:base/Hash";
 import Order "mo:base/Order";
 
@@ -63,6 +63,6 @@ type and basic operations over it.  (The base library gives these definitions fo
 
   public type LogOps<Id, CRU> = [LogOp<Id, CRU>];
 
-  public type LogBuf<Id, CRU> = Buf.Buf<LogOp<Id, CRU>>;
+  public type LogBuffer<Id, CRU> = Buffer.Buffer<LogOp<Id, CRU>>;
 
 }

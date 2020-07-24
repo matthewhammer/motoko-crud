@@ -6,6 +6,7 @@ echo == Build.
 echo
 
 dfx start --background
+dfx canister create --all
 dfx build
 
 echo
