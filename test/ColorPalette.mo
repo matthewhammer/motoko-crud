@@ -65,5 +65,10 @@ actor {
       case (#ok(palette)) ?palette.toArray();
       case (#err(_)) null;
     }
-  }
+  };
+
+  public func selfTest() : () {
+     // to do
+     Debug.print "success"
+  };
 }
