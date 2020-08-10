@@ -5,6 +5,9 @@
     },
     "NatIntMap": {
       "main": "test/NatIntMap.mo"
+    },
+    "ColorPalette": {
+      "main": "test/ColorPalette.mo"
     }
   },
   "defaults": {
