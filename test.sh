@@ -22,3 +22,10 @@ echo
 
 dfx canister install RawMap
 dfx canister call RawMap selfTest '()'
+
+echo
+echo == Color palette test.
+echo
+
+dfx canister install ColorPalette
+dfx canister call ColorPalette selfTest '()'
