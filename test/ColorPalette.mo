@@ -17,7 +17,7 @@ actor {
 
   type Palette = Buffer.Buffer<Color>; // to do -- what order? duplicates?
 
-  // A database of integers, each identified by a natural number.
+  // A database of palettes, each identified by a natural number.
   flexible var db = Db.Database<Nat, Palette>(
     func (_, last) {
       switch last { case null 0; case (?x) x + 1 };
