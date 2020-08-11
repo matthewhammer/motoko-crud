@@ -5,6 +5,7 @@ import Buffer "mo:base/Buffer";
 
 import TrieMap "mo:base/TrieMap";
 import RBTree "mo:base/RBTree";
+import Iter "mo:base/Iter";
 
 module {
 
@@ -17,7 +18,7 @@ module {
   {
 
     // to do -- two possible representations, depending on the identifier kind:
-    var entries : TrieMap.TrieMap<Id, CRU> = switch idKind {
+    var _entries : TrieMap.TrieMap<Id, CRU> = switch idKind {
       case (#hash(h)) {
              TrieMap.TrieMap<Id, CRU>(idEqual, h)
            };
@@ -33,13 +34,13 @@ module {
     public func create(cru:CRU) : Id {
       let x : Id = idCreate(cru, lastCreated);
       lastCreated := ?x;
-      entries.put(x, cru);
+      _entries.put(x, cru);
       logBuffer.add(#create(x, cru));
       x
     };
 
     public func read(id:Id) : Res<CRU> {
-      switch (entries.get(id)) {
+      switch (_entries.get(id)) {
         case null {
           logBuffer.add(#read(id, #err(#invalidId)));
           #err(#invalidId)
@@ -53,7 +54,7 @@ module {
     };
 
     public func update(id:Id, cru:CRU) : Res<()> {
-      switch (entries.replace(id, cru)) {
+      switch (_entries.replace(id, cru)) {
         case null {
           logBuffer.add(#update(id, cru, ?#invalidId));
           #err(#invalidId)
@@ -66,7 +67,7 @@ module {
     };
 
     public func delete(id:Id) : Res<()> {
-      switch (entries.remove(id)) {
+      switch (_entries.remove(id)) {
         case null { #err(#invalidId) };
         case (?_) { #ok(()) };
       }
@@ -76,8 +77,11 @@ module {
       let l = logBuffer.clone();
       logBuffer.clear();
       l
-    }
+    };
 
+    public func entries() : Iter.Iter<(Id, CRU)> {
+      _entries.entries()
+    };
   };
 
 }

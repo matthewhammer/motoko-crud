@@ -8,6 +8,9 @@
     },
     "ColorPalette": {
       "main": "test/ColorPalette.mo"
+    },
+    "GameEntities": {
+      "main": "test/GameEntities.mo"
     }
   },
   "defaults": {
