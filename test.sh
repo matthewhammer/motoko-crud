@@ -29,3 +29,10 @@ echo
 
 dfx canister install ColorPalette
 dfx canister call ColorPalette selfTest '()'
+
+echo
+echo == Game entity test.
+echo
+
+dfx canister install GameEntities
+dfx canister call GameEntities selfTest '()'
