@@ -20,26 +20,32 @@ dfx build NatIntMap &&\
 dfx canister install NatIntMap &&\
 dfx canister call NatIntMap selfTest '()'
 
-# echo
-# echo == RawMap test.
-# echo
+echo
+echo == RawMap test.
+echo
 
-# dfx canister install RawMap
-# dfx canister call RawMap selfTest '()'
+dfx canister create RawMap &&\
+dfx build RawMap &&\
+dfx canister install RawMap &&\
+dfx canister call RawMap selfTest '()'
 
-# echo
-# echo == Color palette test.
-# echo
+echo
+echo == Color palette test.
+echo
 
-# dfx canister install ColorPalette
-# dfx canister call ColorPalette selfTest '()'
+dfx canister create ColorPalette &&\
+dfx build ColorPalette &&\
+dfx canister install ColorPalette &&\
+dfx canister call ColorPalette selfTest '()'
 
-# echo
-# echo == Game entity test.
-# echo
+echo
+echo == Game entity test.
+echo
 
-# dfx canister install GameEntities
-# dfx canister call GameEntities selfTest '()'
+dfx canister create GameEntities &&\
+dfx build GameEntities &&\
+dfx canister install GameEntities &&\
+dfx canister call GameEntities selfTest '()'
 
 echo
 echo test suite done.
