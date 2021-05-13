@@ -1,6 +1,0 @@
-{
- "name": "crud",
-  "repo": "git@github.com:matthewhammer/motoko-crud",
-  "version": "v0.0.1",
-  "dependencies": ["base"]
-}

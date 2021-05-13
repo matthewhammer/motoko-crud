@@ -6,10 +6,11 @@
 
 */
 
-import Order "mo:base/Order";
-import Nat "mo:base/Nat";
-import Prim "mo:prim";
 import Debug "mo:base/Debug";
+import Nat "mo:base/Nat";
+import Nat8 "mo:base/Nat8";
+import Nat32 "mo:base/Nat32";
+import Order "mo:base/Order";
 
 import Database "../src/Database";
 
@@ -42,15 +43,15 @@ actor {
     }
   };
 
-  func keyHash(x : Key) : Word32 {
-    let blowup : Nat8 -> Word32 = func (x) {
-      Prim.natToWord32(Prim.nat8ToNat(x))
+  func keyHash(x : Key) : Nat32 {
+    let blowupAndBitshiftLeft : (Nat8, Nat32) -> Nat32 = func (x, y) {
+      Nat32.bitshiftLeft(Nat32.fromNat(Nat8.toNat(x)), y)
     };
     // to do -- use all bits in the final hash, not just the first ones
-    blowup(x[0]) << 24 +
-      blowup(x[1]) << 16 +
-      blowup(x[2]) << 8 +
-      blowup(x[3])
+    blowupAndBitshiftLeft(x[0], 24) +
+    blowupAndBitshiftLeft(x[0], 16) +
+    blowupAndBitshiftLeft(x[0], 8) +
+    blowupAndBitshiftLeft(x[0], 0)
   };
 
   var db = Database.Database<Key, Val>(

@@ -43,4 +43,9 @@ actor {
     db.drainLog().toArray()
   };
 
+  public func selfTest() : () {
+     // to do
+     Debug.print "success" 
+  };
+
 }
